@@ -4,10 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     Style="{StaticResource PageStyle}"
     xmlns:prismMvvm="using:Prism.Windows.Mvvm"
-    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     prismMvvm:ViewModelLocator.AutoWireViewModel="True" 
     mc:Ignorable="d">
     <Grid
@@ -25,29 +23,13 @@
         <Grid
             Grid.Row="1" 
             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-            <StackPanel Spacing="4">
-                <Button Content="DisplayDialog" Command="{x:Bind ViewModel.DisplayHelloDialogCommand}"/>
-                <ListView x:Name="NumberList" ItemsSource="{x:Bind ViewModel.Numbers}">
-                    <interactivity:Interaction.Behaviors>
-                        <core:EventTriggerBehavior EventName="SelectionChanged">
-                            <core:InvokeCommandAction Command="{x:Bind ViewModel.DisplaySelectedItemCommand}"
-                                                      CommandParameter="{Binding SelectedItem, ElementName=NumberList}"/>
-                        </core:EventTriggerBehavior>
-                    </interactivity:Interaction.Behaviors>
-                </ListView>
-            </StackPanel>
+            <Button Content="DisplayDialog" Command="{x:Bind ViewModel.DisplayHelloDialogCommand}"/>
         </Grid>
 
         <ContentDialog x:Name="HelloDialog"
                        x:FieldModifier="public"
                        CloseButtonText="Close">
             <TextBlock Text="Hello"/>
-        </ContentDialog>
-
-        <ContentDialog x:Name="SelectedItemDialog"
-                       x:FieldModifier="public"
-                       CloseButtonText="Close">
-            <TextBlock Text="{Binding SelectedItem, ElementName=NumberList}"/>
         </ContentDialog>
     </Grid>
 </Page>
