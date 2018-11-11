@@ -2,6 +2,7 @@
 using Prism.Commands;
 using Prism.Windows.Mvvm;
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace PreventDoubleClick.ViewModels
@@ -21,6 +22,7 @@ namespace PreventDoubleClick.ViewModels
         {
             try
             {
+                Debug.WriteLine("Command fired.");
                 _canDisplayHelloDialog = false;
                 DisplayHelloDialogCommand.RaiseCanExecuteChanged();
                 await MainPage.Current.HelloDialog.ShowAsync();
@@ -32,4 +34,6 @@ namespace PreventDoubleClick.ViewModels
             }
         }
     }
+
+
 }
