@@ -11,7 +11,6 @@ namespace PreventDoubleClick.ViewModels
     public class MainViewModel : ViewModelBase
     {
         public List<string> Numbers = new List<string> { "Zero", "One", "Two" };
-        public string SelectedItem { get; private set; }
 
         public MainViewModel()
         {
@@ -60,7 +59,7 @@ namespace PreventDoubleClick.ViewModels
                 await Task.Delay(1000);
 
                 // Display Content dialog.
-                SelectedItem = selectedItem;
+                Debug.WriteLine($"SelectedItem = {selectedItem}");
                 await MainPage.Current.SelectedItemDialog.ShowAsync();
             }
             finally
