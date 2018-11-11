@@ -38,7 +38,6 @@ namespace PreventDoubleClick.ViewModels
 
                 // Display Content dialog.
                 await MainPage.Current.HelloDialog.ShowAsync();
-                Debug.WriteLine($"_canDisplayHelloDialog = {_canDisplayHelloDialog}");
             }
             finally
             {
