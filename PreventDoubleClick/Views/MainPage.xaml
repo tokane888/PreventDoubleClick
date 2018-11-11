@@ -23,8 +23,13 @@
         <Grid
             Grid.Row="1" 
             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-            <!--The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
-                Place your content here.-->
+            <Button Content="DisplayDialog" Command="{x:Bind ViewModel.DisplayHelloDialogCommand}"/>
         </Grid>
+
+        <ContentDialog x:Name="HelloDialog"
+                       x:FieldModifier="public"
+                       CloseButtonText="Close">
+            <TextBlock Text="Hello"/>
+        </ContentDialog>
     </Grid>
 </Page>
