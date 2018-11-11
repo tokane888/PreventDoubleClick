@@ -37,17 +37,5 @@
                 </ListView>
             </StackPanel>
         </Grid>
-
-        <ContentDialog x:Name="HelloDialog"
-                       x:FieldModifier="public"
-                       CloseButtonText="Close">
-            <TextBlock Text="Hello"/>
-        </ContentDialog>
-
-        <ContentDialog x:Name="SelectedItemDialog"
-                       x:FieldModifier="public"
-                       CloseButtonText="Close">
-            <TextBlock Text="{Binding SelectedItem, ElementName=NumberList}"/>
-        </ContentDialog>
     </Grid>
 </Page>

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Windows.UI.Popups;
 
 namespace PreventDoubleClick.ViewModels
 {
@@ -35,8 +36,7 @@ namespace PreventDoubleClick.ViewModels
                 // Do some work.
                 await Task.Delay(1000);
 
-                // Display Content dialog.
-                await MainPage.Current.HelloDialog.ShowAsync();
+                await new MessageDialog("Hello").ShowAsync();
             }
             finally
             {
@@ -58,8 +58,7 @@ namespace PreventDoubleClick.ViewModels
                 // Do some work.
                 await Task.Delay(1000);
 
-                // Display Content dialog.
-                await MainPage.Current.SelectedItemDialog.ShowAsync();
+                await new MessageDialog($"{selectedItem} is selected.").ShowAsync();
             }
             finally
             {
