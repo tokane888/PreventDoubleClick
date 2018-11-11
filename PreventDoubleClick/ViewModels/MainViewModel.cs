@@ -59,7 +59,6 @@ namespace PreventDoubleClick.ViewModels
                 await Task.Delay(1000);
 
                 // Display Content dialog.
-                Debug.WriteLine($"SelectedItem = {selectedItem}");
                 await MainPage.Current.SelectedItemDialog.ShowAsync();
             }
             finally
