@@ -17,20 +17,20 @@ namespace PreventDoubleClick.ViewModels
         {
             DisplayHelloDialogCommand = new DelegateCommand(
                 async () => await DisplayHelloDialogAsync(),
-                () => _canDisplayHelloDialog);
+                () => _canDisplayDialog);
             DisplaySelectedItemCommand = new DelegateCommand<string>(
                 async s => await DisplaySelectedItemAsync(s),
-                _ => _canDisplaySelectedItem);
+                _ => _canDisplayDialog);
         }
 
-        private bool _canDisplayHelloDialog = true;
+        private bool _canDisplayDialog = true;
+
         public DelegateCommand DisplayHelloDialogCommand { get; private set; }
         private async Task DisplayHelloDialogAsync()
         {
             try
             {
-                _canDisplayHelloDialog = false;
-                DisplayHelloDialogCommand.RaiseCanExecuteChanged();
+                ToggleButtonIsEnabled();
 
                 Debug.WriteLine("DisplayHelloDialogCommand fired.");
                 // Do some work.
@@ -40,19 +40,16 @@ namespace PreventDoubleClick.ViewModels
             }
             finally
             {
-                _canDisplayHelloDialog = true;
-                DisplayHelloDialogCommand.RaiseCanExecuteChanged();
+                ToggleButtonIsEnabled();
             }
         }
 
-        private bool _canDisplaySelectedItem = true;
         public DelegateCommand<string> DisplaySelectedItemCommand { get; private set; }
         private async Task DisplaySelectedItemAsync(string selectedItem)
         {
             try
             {
-                _canDisplaySelectedItem = false;
-                DisplaySelectedItemCommand.RaiseCanExecuteChanged();
+                ToggleButtonIsEnabled();
 
                 Debug.WriteLine("DisplaySelectedItemCommand fired.");
                 // Do some work.
@@ -62,9 +59,15 @@ namespace PreventDoubleClick.ViewModels
             }
             finally
             {
-                _canDisplaySelectedItem = true;
-                DisplaySelectedItemCommand.RaiseCanExecuteChanged();
+                ToggleButtonIsEnabled();
             }
+        }
+
+        private void ToggleButtonIsEnabled()
+        {
+            _canDisplayDialog = !_canDisplayDialog;
+            DisplayHelloDialogCommand.RaiseCanExecuteChanged();
+            DisplaySelectedItemCommand.RaiseCanExecuteChanged();
         }
     }
 }
