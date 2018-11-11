@@ -27,9 +27,9 @@
             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
             <StackPanel Spacing="4">
                 <Button Content="DisplayDialog" Command="{x:Bind ViewModel.DisplayHelloDialogCommand}"/>
-                <ListView x:Name="NumberList" ItemsSource="{x:Bind ViewModel.Numbers}" IsItemClickEnabled="True">
+                <ListView x:Name="NumberList" ItemsSource="{x:Bind ViewModel.Numbers}">
                     <interactivity:Interaction.Behaviors>
-                        <core:EventTriggerBehavior EventName="ItemClick">
+                        <core:EventTriggerBehavior EventName="SelectionChanged">
                             <core:InvokeCommandAction Command="{x:Bind ViewModel.DisplaySelectedItemCommand}"
                                                       CommandParameter="{Binding SelectedItem, ElementName=NumberList}"/>
                         </core:EventTriggerBehavior>
